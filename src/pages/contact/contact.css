@@ -61,7 +61,10 @@
     margin-left:5px;
   }
   
-  input,
+  input[type=text],
+  input[type=number],
+  input[type=email],
+  input[type=tel],
   select,
   textarea {
     width: 100%;

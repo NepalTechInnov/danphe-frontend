@@ -35,13 +35,18 @@ import Tax_filings from "./pages/Learning Center Navbar/Tax Filings & Deducation
 import State_guides from "./pages/Learning Center Navbar/State Guides/State_guides";
 import Learningcenter from "./pages/Learning Center Navbar/Learning-center/Learningcenter";
 import Starting_A_Business from "./pages/Starting Business Navbar/Starting_A_Business/Starting_A_Business";
+import Business_Entity_Types from './pages/Starting Business Navbar/Business_Entity_Types/Business_Entity_Types';
 import None_Profit_Corporation from "./pages/Starting Business Navbar/None_Profit_Corporation/None_Profit_Corporation";
 import C_Corporation from "./pages/Starting Business Navbar/C_Corporation/C_Corporation";
 import S_Corporation from "./pages/Starting Business Navbar/S_Corporation/S_Corporation";
+import Professional_Corporation from "./pages/Starting Business Navbar/Professional_Corporation/Professional_Corporation";
 import Limited_Liability_Company from "./pages/Starting Business Navbar/Limited_Liability_Company/Limited_Liability_Company";
 import Incorporate_In_Welfare from "./pages/Starting Business Navbar/Incorporate_In_Welfare/Incorporate_In_Welfare";
 import Employer_ID_Number from "./pages/Starting Business Navbar/Employer_ID_Number/Employer_ID_Number";
 import Registered_Agent_Service from "./pages/Starting Business Navbar/Registered_Agent_Service/Registered_Agent_Service";
+import Name_Reservation from './pages/Starting Business Navbar/Name_Reservation/Name_Reservation';
+import Series_LLC from './pages/Starting Business Navbar/Series_LLC/Series_LLC'
+import Limited_Partnership from './pages/Starting Business Navbar/Limited_Partnership/Limited_Partnership'
 
 
 import Scrop_Election from "./pages/Maintaining_A_BUsiness Navbar/Scrop Election (from 2553)/Scrop_Election"
@@ -55,6 +60,7 @@ import Make_a_Payment from "./pages/Maintaining_A_BUsiness Navbar/Make a Payment
 import Maintaining_a_Business from "./pages/Maintaining_A_BUsiness Navbar/More/Maintaining_a_Business"
 import NonProfit_501_Status from "./pages/Maintaining_A_BUsiness Navbar/NonProfit 501 (C) Status/NonProfit_501_Status"
 import Register_in_Additional_States from "./pages/Maintaining_A_BUsiness Navbar/Register in Additional States/Register_in_Additional_States"
+import ComparisonChart from './pages/Learning Center Navbar/Benefits of Incorporating/Comparision chart/ComparisonChart';
 
 
 
@@ -92,10 +98,12 @@ const App = () => {
               <Route path='/Industry_specific_information' element={<Industry_specific_information />} />
               <Route path='/Tax_filings' element={<Tax_filings />} />              <Route path='/State_guides' element={<State_guides />} />
               <Route path='/Learningcenter' element={<Learningcenter />} />
+              <Route path='/Business_Comparision_Chart' element={< ComparisonChart/>} />
 
 
 
               {/* starting a business navbar */}
+              <Route path='/Business_Entity_Types' element={<Business_Entity_Types />} />
               <Route path='/Registered_Agent_Service' element={ <Registered_Agent_Service/> } />
               <Route path='/Employer_ID_Number' element={ <Employer_ID_Number/> } />
               <Route path='/Incorporate_In_Welfare' element={ <Incorporate_In_Welfare/> } />
@@ -103,7 +111,11 @@ const App = () => {
               <Route path='/S_Corporation' element={ <S_Corporation/> } />
               <Route path='/C_Corporation' element={ <C_Corporation/> } />
               <Route path='/None_Profit_Corporation' element={ <None_Profit_Corporation/> } />
+              <Route path='/Professional_Corporation' element={ <Professional_Corporation/> } />
+              <Route path='/Series_LLC' element={ <Series_LLC />} />
+              <Route path='/Limited_Partnership' element={<Limited_Partnership />} />
               <Route path='/Starting_A_Business' element={ <Starting_A_Business/> } />
+              <Route path='/Name_Reservation' element={ <Name_Reservation/>} />
 
 
 

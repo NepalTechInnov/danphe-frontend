@@ -1,14 +1,17 @@
+
+
+
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import '../cart/checkout.css';
-import CartCard from '../cart/CartCard'
-
+import CartCard from '../cart/CartCard';
+import { useCartGlobally } from '../../contexts/cartContext';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ totalPrice }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState(null);
@@ -30,7 +33,7 @@ const CheckoutForm = () => {
         try {
             const response = await axios.post(
                 `${import.meta.env.VITE_REACT_APP_URL}/api/v1/order/create-payment-intent`,
-                { amount: 1000 },
+                { amount: totalPrice * 100 }, // Stripe expects the amount in cents
                 { headers: { 'Content-Type': 'application/json' } }
             );
 
@@ -40,7 +43,7 @@ const CheckoutForm = () => {
                 payment_method: {
                     card: cardNumberElement,
                     billing_details: {
-                        // You can collect billing details here if needed
+                        // collect billing details here if needed (paxi heram la yeslai)
                     },
                 },
             });
@@ -79,7 +82,7 @@ const CheckoutForm = () => {
                 </div>
             </div>
             <button className="submit-button" type="submit" disabled={!stripe || loading}>
-                {loading ? 'Processing...' : 'Pay Now'}
+                {loading ? 'Processing...' : `Pay $${totalPrice}`}
             </button>
             {error && <div className="error-message">{error}</div>}
             {success && <div className="success-message">Payment succeeded!</div>}
@@ -88,22 +91,31 @@ const CheckoutForm = () => {
 };
 
 const Checkout = () => {
+    const { cart } = useCartGlobally();
+
+    // Calculate the subtotal (static value for testing purpose paxi change garam la dont forgot😊)
+    const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
+    const shippingFee = 20;
+    const stateExpediteFee = 130;
+    const stateFee = 10;
+    const creditCardSurcharge = 10;
+
+    // Calculate the total
+    const totalPrice = subtotal + shippingFee + stateExpediteFee + stateFee + creditCardSurcharge;
+
     return (
         <div className="checkout-container">
-            <h3 className="checkout-title">Welcome to the Payment Page</h3>
-            <Elements stripe={stripePromise}>
-               <div style={{display: 'flex'}}>
-               <CheckoutForm />
-               <CartCard/>
-               </div>
-            </Elements>
-        </div>
+      <div className="container">
+        <h3 className="checkout-title">Checkout Page</h3>
+        <Elements stripe={stripePromise}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem' }}>
+            <CheckoutForm />
+            <CartCard hideContinueButton={true} />
+          </div>
+        </Elements>
+      </div>
+    </div>
     );
 };
 
 export default Checkout;
-
-
-
-
-

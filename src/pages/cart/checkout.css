@@ -1,3 +1,9 @@
+.checkout-title{
+  margin-top: 34px;
+  margin-bottom: 34px;
+}
+
+
 .payment-form {
   display: flex;
   flex-direction: column;
