@@ -7,8 +7,9 @@
 .flexContainer {
   display: flex; /* Using flexbox for layout */
   /* justify-content: space-around; */
-  padding: 20px; /* Padding around the container */
+
   gap: 2rem; /* Gap between flex items */
+  margin-top: 34px;
 }
 
 .userContactInfoContainer{

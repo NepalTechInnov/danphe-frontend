@@ -195,9 +195,11 @@ const UserContactInfo = () => {
   }, []);
 
   return (
-    <div className="flexContainer">
+    <>
+    <div className='container'>
+    <div className="flexContainer ">
       <div className="userContactInfoContainer">
-        <div className="containerxxxxxxxxxxxxxx">
+        <div className="containerxxxxxxx">
           <form onSubmit={formik.handleSubmit} className="contactForm">
             {/* Rendering form fields dynamically from an array */}
             {['firstName', 'middleName', 'lastName', 'country', 'street', 'city', 'state', 'postalCode', 'phoneNumber', 'secondaryPhoneNumber', 'email', 'confirmEmail', 'industry'].map((field) => (
@@ -235,6 +237,8 @@ const UserContactInfo = () => {
         <CartCard /> {/* Rendering the CartCard component */}
       </div>
     </div>
+    </div>
+    </>
   );
 };
 
