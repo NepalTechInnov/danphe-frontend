@@ -1,6 +1,5 @@
 
 
-
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -43,7 +42,7 @@ const CheckoutForm = ({ totalPrice }) => {
                 payment_method: {
                     card: cardNumberElement,
                     billing_details: {
-                        // collect billing details here if needed (paxi heram la yeslai)
+                        // collect billing details here if needed
                     },
                 },
             });
@@ -82,7 +81,7 @@ const CheckoutForm = ({ totalPrice }) => {
                 </div>
             </div>
             <button className="submit-button" type="submit" disabled={!stripe || loading}>
-                {loading ? 'Processing...' : `Pay $${totalPrice}`}
+                {loading ? 'Processing...' : `Pay $${totalPrice.toFixed(2)}`}
             </button>
             {error && <div className="error-message">{error}</div>}
             {success && <div className="success-message">Payment succeeded!</div>}
@@ -93,7 +92,7 @@ const CheckoutForm = ({ totalPrice }) => {
 const Checkout = () => {
     const { cart } = useCartGlobally();
 
-    // Calculate the subtotal (static value for testing purpose paxi change garam la dont forgot😊)
+    // Calculate the subtotal
     const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
     const shippingFee = 20;
     const stateExpediteFee = 130;
@@ -105,16 +104,17 @@ const Checkout = () => {
 
     return (
         <div className="checkout-container">
-      <div className="container">
-        <h3 className="checkout-title">Checkout Page</h3>
-        <Elements stripe={stripePromise}>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem' }}>
-            <CheckoutForm />
-            <CartCard hideContinueButton={true} />
-          </div>
-        </Elements>
-      </div>
-    </div>
+            <div className="container">
+                <h3 className="checkout-title">Checkout Page</h3>
+                <Elements stripe={stripePromise}>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem' }}>
+                        {/* Pass totalPrice to CheckoutForm */}
+                        <CheckoutForm totalPrice={totalPrice} />
+                        <CartCard hideContinueButton={true} />
+                    </div>
+                </Elements>
+            </div>
+        </div>
     );
 };
 

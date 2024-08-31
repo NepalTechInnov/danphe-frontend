@@ -110,7 +110,6 @@
 
 
 
-
 import React from 'react';
 import './cart.css';
 import { useCartGlobally } from '../../contexts/cartContext';
@@ -155,7 +154,7 @@ const Cart = () => {
       {cart.length === 0 ? (
         <div className="emptyCartContainer">
           <p>Your cart is empty</p>
-          <button className='empty_continue_Shopping' onClick={handleContinueShopping}>Continue Shopping</button>
+          <button className="empty_continue_Shopping" onClick={handleContinueShopping}>Continue Shopping</button>
         </div>
       ) : (
         <>
@@ -232,6 +231,4 @@ const Cart = () => {
 };
 
 export default Cart;
-
-
 
