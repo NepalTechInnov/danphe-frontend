@@ -41,7 +41,7 @@
     left: 0;
     border: 0;
     margin: 0;
-    scrolling: no;
+    /* scrolling: no; */
     filter: grayscale(1) contrast(1.2) opacity(0.4);
   }
   

@@ -122,8 +122,6 @@
 
 
 
-
-
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -158,11 +156,10 @@ const UserContactInfo = () => {
         .matches(/^\d+$/, 'Postal code must be a number')
         .required('Postal code is required'),
       phoneNumber: Yup.string()
-        .matches(/^\d+$/, 'Phone number must be a number')
+        .matches(/^(?:\+1[-.\s]?)?(?:\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}$/, 'Invalid US phone number')
         .required('Phone number is required'),
       secondaryPhoneNumber: Yup.string()
-        .matches(/^\d+$/, 'Secondary phone number must be a number')
-        .required('Secondary phone number is required'),
+        .matches(/^(?:\+1[-.\s]?)?(?:\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}$/, 'Invalid US phone number'),
       email: Yup.string().email('Invalid email address').required('Email is required'),
       confirmEmail: Yup.string()
         .oneOf([Yup.ref('email'), null], 'Emails must match')
@@ -196,48 +193,48 @@ const UserContactInfo = () => {
 
   return (
     <>
-    <div className='container'>
-    <div className="flexContainer ">
-      <div className="userContactInfoContainer">
-        <div className="containerxxxxxxx">
-          <form onSubmit={formik.handleSubmit} className="contactForm">
-            {/* Rendering form fields dynamically from an array */}
-            {['firstName', 'middleName', 'lastName', 'country', 'street', 'city', 'state', 'postalCode', 'phoneNumber', 'secondaryPhoneNumber', 'email', 'confirmEmail', 'industry'].map((field) => (
-              <div key={field}>
-                <label htmlFor={field}>
-                  {/* Formatting field names for display */}
-                  {field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-                </label>
-                <input
-                  type={
-                    field === 'email' || field === 'confirmEmail' 
-                      ? 'email' 
-                      : field === 'postalCode' || field === 'phoneNumber' || field === 'secondaryPhoneNumber'
-                      ? 'text' 
-                      : 'text' // Conditional input type for other fields
-                  }
-                  id={field}
-                  name={field}
-                  value={formik.values[field]}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  required
-                />
-                {/* Displaying validation error messages */}
-                {formik.touched[field] && formik.errors[field] && (
-                  <div className="error">{formik.errors[field]}</div>
-                )}
-              </div>
-            ))}
-            <button type="submit">Submit</button> {/* Submit button for the form */}
-          </form>
+      <div className='container'>
+        <div className="flexContainer ">
+          <div className="userContactInfoContainer">
+            <div className="containerxxxxxxx">
+              <form onSubmit={formik.handleSubmit} className="contactForm">
+                {/* Rendering form fields dynamically from an array */}
+                {['firstName', 'middleName', 'lastName', 'country', 'street', 'city', 'state', 'postalCode', 'phoneNumber', 'secondaryPhoneNumber', 'email', 'confirmEmail', 'industry'].map((field) => (
+                  <div key={field}>
+                    <label htmlFor={field}>
+                      {/* Formatting field names for display */}
+                      {field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                    </label>
+                    <input
+                      type={
+                        field === 'email' || field === 'confirmEmail' 
+                          ? 'email' 
+                          : field === 'postalCode' || field === 'phoneNumber' || field === 'secondaryPhoneNumber'
+                          ? 'text' 
+                          : 'text' // Conditional input type for other fields
+                      }
+                      id={field}
+                      name={field}
+                      value={formik.values[field]}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      required
+                    />
+                    {/* Displaying validation error messages */}
+                    {formik.touched[field] && formik.errors[field] && (
+                      <div className="error">{formik.errors[field]}</div>
+                    )}
+                  </div>
+                ))}
+                <button type="submit">Submit</button> {/* Submit button for the form */}
+              </form>
+            </div>
+          </div>
+          <div className="cartContainer">
+            <CartCard /> {/* Rendering the CartCard component */}
+          </div>
         </div>
       </div>
-      <div className="cartContainer">
-        <CartCard /> {/* Rendering the CartCard component */}
-      </div>
-    </div>
-    </div>
     </>
   );
 };
