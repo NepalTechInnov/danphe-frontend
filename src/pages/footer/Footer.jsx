@@ -15,13 +15,13 @@ const Footer = () => {
             and grow their return.
           </p>
           <p>
-            <span role="img" aria-label="headset">🎧</span> <span className="headSetText">Speak to our expert at </span> <br /><span className="phone-number">(+02) 0100-556-345</span>
+            <span role="img" aria-label="headset">🎧</span> <span className="headSetText">Speak to our expert at </span> <br /><span className="phone-number">+1(313) 355-3295</span>
           </p>
         </div>
 
         <div className="footer-section contact">
           <h2>Contact</h2>
-          <p>Old Westbury 256, New York 11201, United States</p>
+          <p>2337 Cedar Knoll Dr, Troy, MI 48083, USA</p>
           <div className='footer_social'>
             <div className='footer_social_icon'>
               <a className="socialContainer containerOne" href="#">
@@ -62,7 +62,7 @@ const Footer = () => {
         <div className="footer-section support">
           <h2>Support</h2>
           <p>If you have a General enquiry, please drop me an email</p>
-          <p>Email: <a href="mailto:support@motivo.com">support@motivo.com</a></p>
+          <p>Email: <a href="mailto:support@motivo.com">info@ascendcorprate.com</a></p>
         </div>
       </div>
 
