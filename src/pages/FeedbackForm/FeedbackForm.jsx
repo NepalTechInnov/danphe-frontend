@@ -10,23 +10,24 @@ const FeedbackForm = () => {
 
         <div className="container_div">
           <div className="mapSection">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.0206827200386!2d85.31895767492226!3d27.685755626444482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb17000477c865%3A0xc8d8ea8f33bee317!2sNepal%20Tech%20Innovations%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1722750319139!5m2!1sen!2snp"
-              className="iframe"
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2938.5599432215563!2d-83.10425182388012!3d42.56463617117459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDLCsDMzJzUyLjciTiA4M8KwMDYnMDYuMCJX!5e0!3m2!1sen!2snp!4v1725068281328!5m2!1sen!2snp" 
+ className="iframe"
+ allowFullScreen=""
+  loading="lazy">
+</iframe>
+
+
+
             <div className="addressSection">
               <div className="addressText">
                 <h2 className="title_contact">ADDRESS</h2>
-                <p>Rio 5 Marg, Lalitpur 44700</p>
+                <p>2337 Cedar Knoll Dr, Troy, MI 48083, USA</p>
               </div>
               <div className="addressText">
                 <h2 className="title_contact">EMAIL</h2>
-                <a className="emailSection" href="mailto:example@email.com">example@email.com</a>
+                <a className="emailSection" href="mailto:info@ascendcorprate.com">info@ascendcorprate.com</a>
                 <h2 className="title_contact">PHONE</h2>
-                <p className="emailSection">123-456-7890</p>
+                <p className="emailSection">+1(313) 355-3295</p>
               </div>
             </div>
           </div>
